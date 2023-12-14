@@ -78,13 +78,28 @@ class DrawSense {
         const downloadATag = document.createElement("a");
         var blob = new Blob([figure], { type: "application/json" });
         downloadATag.href = URL.createObjectURL(blob);
-        downloadATag.download = "data.json";
+        downloadATag.download = "your_doodle.json";
         // Append the link to the body
         document.body.appendChild(downloadATag);
         // Trigger a click on the link to start the download
         downloadATag.click();
         // Remove the link from the body
         document.body.removeChild(downloadATag);
+
+        // Get the canvas data as a data URL (PNG format)
+        let dataUrl = this.canvas.toDataURL("image/png");
+        // Create a link element
+        let a = document.createElement("a");
+        // Set the href attribute to the canvas data URL
+        a.href = dataUrl;
+        // Set the download attribute with the desired file name
+        a.download = "your_doodle.png";
+        // Append the link to the body
+        document.body.appendChild(a);
+        // Trigger a click on the link to start the download
+        a.click();
+        // Remove the link from the body
+        document.body.removeChild(a);
       }
     };
   };
