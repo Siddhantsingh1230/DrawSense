@@ -1,0 +1,166 @@
+body,
+html {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f0f1fa;
+}
+
+/* fonts */
+@font-face {
+  font-family: "Gilroy";
+  src: url("./assets/fonts/Gilroy-Regular.ttf");
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  font-family: Gilroy;
+  font-weight: 600;
+  user-select: none;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.navbar {
+  width: 100%;
+  height: 120px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-inline: 5rem;
+}
+.menu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+.connect {
+  background: black;
+  border-radius: 3rem;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  padding-inline: 1.5rem;
+  padding-block: 1rem;
+  gap: 1rem;
+  position: relative;
+  overflow: hidden;
+}
+.connect span {
+  width: 0.35rem;
+  height: 0.35rem;
+  background: white;
+  border-radius: 50%;
+  position: relative;
+  transition: all ease 0.32s;
+  left: 0;
+}
+.connect p {
+  color: white;
+  font-weight: 600;
+  position: relative;
+  transition: all ease 0.32s;
+  left: 0;
+}
+.connect i {
+  color: white;
+  position: absolute;
+  font-weight: normal;
+  left: -15px;
+  transition: all ease 0.32s;
+}
+.connect:hover i {
+  left: 16px;
+}
+.connect:hover span {
+  left: 30px;
+}
+.connect:hover p {
+  left: 20px;
+}
+.connect:hover {
+  background: #000;
+}
+
+.github {
+  text-decoration: none;
+  border: none;
+  background: #e4e6ef;
+  font-size: 1rem;
+  padding-inline: 1.5rem;
+  padding-block: 1rem;
+  border-radius: 3rem;
+  cursor: pointer;
+  font-weight: 900;
+  transition: all ease 0.32s;
+}
+.github:hover {
+  background: white;
+}
+.logo {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+}
+.logo p {
+  font-size: 2rem;
+  font-weight: 600;
+}
+.logo img {
+  height: 2rem;
+  width: 2rem;
+}
+.main {
+  width: 100%;
+  height: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  flex-direction: row-reverse;
+  gap: 1.5rem;
+}
+.canvasContainer {
+  width: 70%;
+  height: 80%;
+  border-radius: 1rem;
+  border: 1px solid rgb(0, 0, 0);
+  overflow: hidden;
+  cursor: url(./assets/images/pen.png) 3 3, auto;
+}
+.main button {
+  padding-inline: 1rem;
+  padding-block: 0.5rem;
+  font-weight: 600;
+  background: black;
+  border-radius: 2rem;
+  color: white;
+  cursor: pointer;
+  border: none;
+}
+.controlButtons {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.5rem;
+  align-items: center;
+}
+.main #reset:hover {
+  background: rgb(252, 41, 41);
+}.main #undo:hover {
+  background: rgb(143, 62, 250);
+}
