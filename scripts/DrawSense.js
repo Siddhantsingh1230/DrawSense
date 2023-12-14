@@ -5,6 +5,9 @@ class DrawSense {
     this.canvas.width = container.clientWidth;
     this.canvas.height = container.clientHeight;
     this.ctx = this.canvas.getContext("2d");
+    this.canvas.style=`
+        opacity:0.9;
+    `;
     this.#eventListeners(container);
     this.paths = [];
     this.isDrawing = false;
@@ -15,11 +18,13 @@ class DrawSense {
   #undo = document.getElementById("undo");
   #reset = document.getElementById("reset");
   #recognize = document.getElementById("recognize");
+  #placeholder = document.querySelector(".canvasPlaceholder");
   #eventListeners = (container) => {
     this.canvas.onmousedown = (evt) => {
       const mouse = this.#getMouse(evt);
       this.paths.push([mouse]);
       this.isDrawing = true;
+      this.#placeholder.style.opacity ="0";
     };
     document.onmouseup = (evt) => {
       this.isDrawing = false;
@@ -54,12 +59,15 @@ class DrawSense {
       if (this.paths.length) {
         this.paths.pop();
         this.#render();
+        (this.paths.length)==0?this.#placeholder.style.opacity ="0.85":null;
       }
     };
     this.#reset.onclick = () => {
       if (this.paths.length) {
         this.paths = [];
         this.#render();
+        this.#placeholder.style.opacity ="0.85";
+        
       }
     };
     this.#recognize.onclick = () => {
@@ -91,15 +99,18 @@ class DrawSense {
     if (this.paths.length > 0) {
       this.#undo.disabled = false;
       this.#reset.disabled = false;
-      this.#reset.style.cursor = "auto";
-      this.#undo.style.cursor = "auto";
-      this.#recognize.style.cursor = "auto";
+      this.#reset.style.cursor = "pointer";
+      this.#undo.style.cursor = "pointer";
+      this.#recognize.style.cursor = "pointer";
+      this.#recognize.style.pointerEvents="auto";
+      this.#undo.style.pointerEvents="auto";
+      this.#reset.style.pointerEvents="auto";
     } else {
       this.#undo.disabled = true;
       this.#reset.disabled = true;
-      this.#reset.style.cursor = "not-allowed";
-      this.#undo.style.cursor = "not-allowed";
-      this.#recognize.style.cursor = "not-allowed";
+      this.#recognize.style.pointerEvents="none";
+      this.#undo.style.pointerEvents="none";
+      this.#reset.style.pointerEvents="none";
     }
   };
 }
