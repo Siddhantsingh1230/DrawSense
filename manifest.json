@@ -1,6 +1,7 @@
 {
   "name": "DrawSense",
   "short_name": "DrawSense",
+  "start_url":"index.html",
   "icons": [
     {
       "src": "/android-chrome-192x192.png",
