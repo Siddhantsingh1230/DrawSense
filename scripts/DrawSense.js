@@ -5,7 +5,7 @@ class DrawSense {
     this.canvas.width = container.clientWidth;
     this.canvas.height = container.clientHeight;
     this.ctx = this.canvas.getContext("2d");
-    this.canvas.style=`
+    this.canvas.style = `
         opacity:0.9;
     `;
     this.#eventListeners(container);
@@ -24,7 +24,7 @@ class DrawSense {
       const mouse = this.#getMouse(evt);
       this.paths.push([mouse]);
       this.isDrawing = true;
-      this.#placeholder.style.opacity ="0";
+      this.#placeholder.style.opacity = "0";
     };
     document.onmouseup = (evt) => {
       this.isDrawing = false;
@@ -59,29 +59,31 @@ class DrawSense {
       if (this.paths.length) {
         this.paths.pop();
         this.#render();
-        (this.paths.length)==0?this.#placeholder.style.opacity ="0.85":null;
+        this.paths.length == 0
+          ? (this.#placeholder.style.opacity = "0.85")
+          : null;
       }
     };
     this.#reset.onclick = () => {
       if (this.paths.length) {
         this.paths = [];
         this.#render();
-        this.#placeholder.style.opacity ="0.85";
-        
+        this.#placeholder.style.opacity = "0.85";
       }
     };
     this.#recognize.onclick = () => {
       if (this.paths.length) {
         const figure = JSON.stringify(this.paths);
+        // Create a download link
         const downloadATag = document.createElement("a");
-        downloadATag.setAttribute(
-          "href",
-          "data:text/plain:charset=utf-8" + encodeURIComponent(figure)
-        );
-        const filename = new Date().getTime() + ".json";
-        downloadATag.setAttribute("download", filename);
+        var blob = new Blob([figure], { type: "application/json" });
+        downloadATag.href = URL.createObjectURL(blob);
+        downloadATag.download = "data.json";
+        // Append the link to the body
         document.body.appendChild(downloadATag);
+        // Trigger a click on the link to start the download
         downloadATag.click();
+        // Remove the link from the body
         document.body.removeChild(downloadATag);
       }
     };
@@ -102,15 +104,15 @@ class DrawSense {
       this.#reset.style.cursor = "pointer";
       this.#undo.style.cursor = "pointer";
       this.#recognize.style.cursor = "pointer";
-      this.#recognize.style.pointerEvents="auto";
-      this.#undo.style.pointerEvents="auto";
-      this.#reset.style.pointerEvents="auto";
+      this.#recognize.style.pointerEvents = "auto";
+      this.#undo.style.pointerEvents = "auto";
+      this.#reset.style.pointerEvents = "auto";
     } else {
       this.#undo.disabled = true;
       this.#reset.disabled = true;
-      this.#recognize.style.pointerEvents="none";
-      this.#undo.style.pointerEvents="none";
-      this.#reset.style.pointerEvents="none";
+      this.#recognize.style.pointerEvents = "none";
+      this.#undo.style.pointerEvents = "none";
+      this.#reset.style.pointerEvents = "none";
     }
   };
 }
