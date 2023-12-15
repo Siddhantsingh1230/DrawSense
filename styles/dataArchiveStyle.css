@@ -1,0 +1,144 @@
+body,
+html {
+  height: 100%;
+  width: 100%;
+  background-color: #f0f1fa;
+  scroll-behavior: smooth;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* fonts */
+@font-face {
+  font-family: "Gilroy";
+  src: url("../assets/fonts/Gilroy-Regular.ttf");
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Gilroy;
+  font-weight: 600;
+  user-select: none;
+}
+
+.container {
+  width: 90%;
+  height: 100%;
+  padding-top: 4.5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 250px);
+  grid-auto-rows: 10px;
+  overflow-y: scroll;
+  justify-content: center;
+}
+.container::-webkit-scrollbar {
+  display: none;
+}
+.container {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.card {
+  border-radius: 1rem;
+  background-color: red;
+  margin: 0.5rem;
+}
+.small {
+  grid-row-end: span 26;
+  background-color: springgreen;
+}
+.medium {
+  grid-row-end: span 33;
+  background-color: rgb(249, 65, 65);
+}
+.big {
+  grid-row-end: span 45;
+  background-color: rgb(62, 110, 255);
+}
+.xl {
+  grid-row-end: span 36;
+  background-color: deeppink;
+}
+.xs {
+  grid-row-end: span 20;
+  background-color: deepskyblue;
+}
+.xxl {
+  grid-row-end: span 50;
+  background-color: wheat;
+}
+.color1 {
+  grid-row-end: span 50;
+  background-color: #00b9e8;
+}
+.color2 {
+  grid-row-end: span 30;
+  background-color: #e23d28;
+}
+.color3 {
+  grid-row-end: span 30;
+  background-color: #8a2be2;
+}
+
+color4 {
+  grid-row-end: span 20;
+  background-color: #d473d4;
+}
+
+.title {
+  position: absolute;
+  left: 50%;
+  top: 1rem;
+  background: rgba(255, 255, 255, 0.1); /* Background with some transparency */
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-size: 0.85rem;
+  transform: translateX(-50%);
+  color: #000;
+  padding-inline: 1.5rem;
+  padding-block: 1rem;
+  border-radius: 3rem;
+  font-weight: 900;
+  text-decoration: none;
+  transition: all ease 0.32s;
+}
+
+.title:hover {
+  background: black;
+  color: white;
+}
+.more {
+  color: #fff;
+  padding-inline: 1rem;
+  padding-block: 0.5rem;
+  border-radius: 1rem;
+  font-weight: 900;
+  text-decoration: none;
+  background: black;
+  border: none;
+  margin-block: 1rem;
+  cursor: pointer;
+}
+.more i {
+  color: white;
+}
+.more:active {
+  opacity: 0.35;
+}
+
+/* Mobile styles */
+
+@media (max-width: 767px) {
+  .container {
+    width: 100%;
+    grid-template-columns: repeat(auto-fill, 150px);
+    grid-auto-rows: 6px;
+  }
+  .card {
+    margin: 0.25rem;
+  }
+}
