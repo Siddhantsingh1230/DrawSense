@@ -201,6 +201,9 @@ footer i{
   .navbar {
     padding-inline: 1rem;
   }
+  .logo p {
+    font-size: 1.5rem;
+  }
   .connect{
     display: none;
   }
