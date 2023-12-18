@@ -129,6 +129,21 @@ color4 {
 .more:active {
   opacity: 0.35;
 }
+.visualisation{
+  position: absolute;
+  right: 5%;
+  top: 1.5rem;
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  font-size: 1rem;
+  background: #000;
+  height:2rem;
+  width: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}
 
 /* Mobile styles */
 
