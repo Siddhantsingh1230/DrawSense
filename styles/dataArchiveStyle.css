@@ -144,7 +144,19 @@ color4 {
   align-items: center;
   border-radius: 50%;
 }
-
+.loading{
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  background-color: #f0f1fa;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.loading p{
+  color: rgb(14, 14, 14);
+  transform: translateY(-100%);
+}
 /* Mobile styles */
 
 @media (max-width: 767px) {
