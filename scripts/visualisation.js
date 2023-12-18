@@ -40295,11 +40295,16 @@ document.addEventListener("DOMContentLoaded", function () {
               mode: "xy",
             },
             zoom: {
+              mode:"xy",
               drag: {
                 enabled: true,
                 borderColor: "rgb(54, 162, 235)",
                 borderWidth: 1,
                 backgroundColor: "rgba(54, 162, 235, 0.3)",
+                threshold:100,
+              },
+              pinch:{
+                enabled:true
               },
               wheel: {
                 enabled: true,
