@@ -70,7 +70,6 @@ html {
 .tut {
   height: 50%;
   width: 40%;
-  border-radius: 2rem;
 }
 /* Mobile Styles */
 
@@ -79,6 +78,7 @@ html {
   #chartContainer2 {
     border: 1px solid rgb(0, 0, 0);
     border-radius: 1rem;
+    margin-bottom: 1rem;
   }
 
   .navbar a {
@@ -97,6 +97,7 @@ html {
     padding: 0.5rem;
   }
   .tut {
-    border-radius: 1.5rem;
+    height: 400px;
+    width: 400px;
   }
 }
