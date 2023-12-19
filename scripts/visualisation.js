@@ -1,10 +1,51 @@
 import { dataArray } from "./dataset.js";
+import { dataLabels } from "./dataset.js";
 
 document.addEventListener("DOMContentLoaded", function () {
   // Get the container element
   const chartContainer = document.getElementById("chartContainer");
   const chartContainer2 = document.getElementById("chartContainer2");
-
+  // label icons
+  let labelIcons = [];
+  dataLabels.map((label) => {
+    let iconImg = new Image(15, 15);
+    switch (label) {
+      case "car":
+        iconImg.src = "./assets/images/car.png";
+        labelIcons.push(iconImg);
+        break;
+      case "fish":
+        iconImg.src = "./assets/images/fish.png";
+        labelIcons.push(iconImg);
+        break;
+      case "tree":
+        iconImg.src = "./assets/images/tree.png";
+        labelIcons.push(iconImg);
+        break;
+      case "clock":
+        iconImg.src = "./assets/images/clock.png";
+        labelIcons.push(iconImg);
+        break;
+      case "house":
+        iconImg.src = "./assets/images/house.png";
+        labelIcons.push(iconImg);
+        break;
+      case "guitar":
+        iconImg.src = "./assets/images/guitar.png";
+        labelIcons.push(iconImg);
+        break;
+      case "pencil":
+        iconImg.src = "./assets/images/pen.png";
+        labelIcons.push(iconImg);
+        break;
+      case "bicycle":
+        iconImg.src = "./assets/images/bicycle.png";
+        labelIcons.push(iconImg);
+        break;
+      default:
+        "❓";
+    }
+  });
   // Create scatter chart with dynamic size
   createScatterChart(dataArray, chartContainer);
   createScatterChart2(dataArray, chartContainer2);
@@ -27,7 +68,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Generate random colors for each unique label
     const labelColors = generateRandomColors(uniqueLabels.length);
-
     // Create scatter dataset
     const scatterDataset = data.map((item, index) => ({
       x: item.width,
@@ -49,6 +89,11 @@ document.addEventListener("DOMContentLoaded", function () {
       },
       options: {
         animation: false,
+        elements: {
+          point: {
+            pointStyle: labelIcons,
+          },
+        },
         scales: {
           x: {
             type: "linear",
@@ -79,6 +124,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 borderColor: "rgb(54, 162, 235)",
                 borderWidth: 1,
                 backgroundColor: "rgba(54, 162, 235, 0.3)",
+                threshold: 100,
               },
               wheel: {
                 enabled: true,
@@ -116,13 +162,6 @@ document.addEventListener("DOMContentLoaded", function () {
         },
       },
     });
-
-    // Adjust legend position for mobile devices
-    if (window.innerWidth <= 600) {
-      scatterChart.options.plugins.legend.position = "bottom";
-    } else {
-      scatterChart.options.plugins.legend.position = "right";
-    }
     scatterChart.options.plugins.legend.position = "bottom";
   }
   //
@@ -164,6 +203,11 @@ document.addEventListener("DOMContentLoaded", function () {
         ],
       },
       options: {
+        elements: {
+          point: {
+            pointStyle: labelIcons,
+          },
+        },
         animation: false,
         scales: {
           x: {
@@ -238,18 +282,7 @@ document.addEventListener("DOMContentLoaded", function () {
       },
     });
     scatterChart.options.plugins.legend.position = "bottom";
-
-    // Resize the chart when the window is resized
-    window.addEventListener("resize", function () {
-      // Adjust legend position for mobile devices
-      if (window.innerWidth <= 600) {
-        scatterChart.options.plugins.legend.position = "bottom";
-      } else {
-        scatterChart.options.plugins.legend.position = "right";
-      }
-    });
   }
-  //
 
   // Function to generate random colors
   function generateRandomColors(count) {
