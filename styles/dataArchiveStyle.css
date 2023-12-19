@@ -152,6 +152,7 @@ html {
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: all ease 0.2s;
 }
 .loading p {
   color: rgb(14, 14, 14);

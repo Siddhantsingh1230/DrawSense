@@ -16,22 +16,17 @@ const randomSizeGeneartor = () => {
 
 const container = document.querySelector(".container");
 const moreBtn = document.querySelector(".more");
+const loadingElem = document.querySelector(".loading");
 let loading = true;
-let loadingElem = null;
 const createCards = (index) => {
   for (let i = index; i <= index + 14; i++) {
-    if (loading && loadingElem == null) {
-      loadingElem = document.createElement("div");
-      loadingElem.innerHTML = "<p>Loading..</p>";
-      loadingElem.classList.add("loading");
-      container.appendChild(loadingElem);
-    }
+    loadingElem.style.opacity = "1";
+    loadingElem.style.zIndex = "1";
+
     fetch("https://drawsensearchives.onrender.com/Image?file=" + i).then(
       (resp) => {
-        if (loadingElem) {
-          container.removeChild(loadingElem);
-          loadingElem = null;
-        }
+        loadingElem.style.opacity = "0";
+        loadingElem.style.zIndex = "-1";
         loading = false;
         let card = document.createElement("div");
         card.classList.add(randomSizeGeneartor());
@@ -60,4 +55,5 @@ fetchCards();
 moreBtn.addEventListener("click", () => {
   loading = true;
   fetchCards();
+  container.scrollTop = container.scrollHeight;
 });
