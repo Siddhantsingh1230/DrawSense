@@ -32,6 +32,7 @@ html {
   height: 80vh;
   width: 90%;
   margin-top: 1rem;
+  overflow-x: hidden;
 }
 .navbar {
   display: flex;

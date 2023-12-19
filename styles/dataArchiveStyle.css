@@ -84,7 +84,7 @@ html {
   background-color: #8a2be2;
 }
 
-color4 {
+.color4 {
   grid-row-end: span 20;
   background-color: #d473d4;
 }
@@ -129,7 +129,7 @@ color4 {
 .more:active {
   opacity: 0.35;
 }
-.visualisation{
+.visualisation {
   position: absolute;
   right: 5%;
   top: 1.5rem;
@@ -137,25 +137,24 @@ color4 {
   text-decoration: none;
   font-size: 1rem;
   background: #000;
-  height:2rem;
+  height: 2rem;
   width: 2rem;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 50%;
 }
-.loading{
+.loading {
   position: fixed;
+  width: 90%;
   height: 100%;
-  width: 100%;
   background-color: #f0f1fa;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.loading p{
+.loading p {
   color: rgb(14, 14, 14);
-  transform: translateY(-100%);
 }
 /* Mobile styles */
 
@@ -167,5 +166,9 @@ color4 {
   }
   .card {
     margin: 0.25rem;
+  }
+  .loading {
+    width: 100%;
+    height: 100%;
   }
 }
