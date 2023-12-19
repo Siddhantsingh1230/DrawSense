@@ -123,16 +123,7 @@ document.addEventListener("DOMContentLoaded", function () {
     } else {
       scatterChart.options.plugins.legend.position = "right";
     }
-
-    // Resize the chart when the window is resized
-    window.addEventListener("resize", function () {
-      // Adjust legend position for mobile devices
-      if (window.innerWidth <= 600) {
-        scatterChart.options.plugins.legend.position = "bottom";
-      } else {
-        scatterChart.options.plugins.legend.position = "right";
-      }
-    });
+    scatterChart.options.plugins.legend.position = "bottom";
   }
   //
   function createScatterChart2(data, container) {
@@ -246,13 +237,7 @@ document.addEventListener("DOMContentLoaded", function () {
         },
       },
     });
-
-    // Adjust legend position for mobile devices
-    if (window.innerWidth <= 600) {
-      scatterChart.options.plugins.legend.position = "bottom";
-    } else {
-      scatterChart.options.plugins.legend.position = "right";
-    }
+    scatterChart.options.plugins.legend.position = "bottom";
 
     // Resize the chart when the window is resized
     window.addEventListener("resize", function () {
