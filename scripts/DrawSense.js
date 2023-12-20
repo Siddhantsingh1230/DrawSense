@@ -1,4 +1,6 @@
 import { draw } from "./draw.js";
+import KNNClassifier from "./KNNModel.js";
+
 class DrawSense {
   constructor(container) {
     this.canvas = document.createElement("canvas");
@@ -73,35 +75,51 @@ class DrawSense {
     };
     this.#recognize.onclick = () => {
       if (this.paths.length) {
-        const figure = JSON.stringify(this.paths);
-        // Create a download link
-        const downloadATag = document.createElement("a");
-        var blob = new Blob([figure], { type: "application/json" });
-        downloadATag.href = URL.createObjectURL(blob);
-        downloadATag.download = "your_doodle.json";
-        // Append the link to the body
-        document.body.appendChild(downloadATag);
-        // Trigger a click on the link to start the download
-        downloadATag.click();
-        // Remove the link from the body
-        document.body.removeChild(downloadATag);
+        const getWidth = (paths) => {
+          const x = paths.flat().map((p) => p[0]);
+          const min = Math.min(...x);
+          const max = Math.max(...x);
+          return max - min;
+        };
+        const getHeight = (paths) => {
+          const y = paths.flat().map((p) => p[1]);
+          const min = Math.min(...y);
+          const max = Math.max(...y);
+          return max - min;
+        };
+        let point = { width: getWidth(this.paths), height: getHeight(this.paths) };
+        let knn= new KNNClassifier();
+        console.log(knn.predict(point,8));
 
-        setTimeout(() => {
-          // Get the canvas data as a data URL (PNG format)
-          let dataUrl = this.canvas.toDataURL("image/png");
-          // Create a link element
-          let a = document.createElement("a");
-          // Set the href attribute to the canvas data URL
-          a.href = dataUrl;
-          // Set the download attribute with the desired file name
-          a.download = "your_doodle.png";
-          // Append the link to the body
-          document.body.appendChild(a);
-          // Trigger a click on the link to start the download
-          a.click();
-          // Remove the link from the body
-          document.body.removeChild(a);
-        }, 1000);
+        // const figure = JSON.stringify(this.paths);
+        // // Create a download link
+        // const downloadATag = document.createElement("a");
+        // var blob = new Blob([figure], { type: "application/json" });
+        // downloadATag.href = URL.createObjectURL(blob);
+        // downloadATag.download = "your_doodle.json";
+        // // Append the link to the body
+        // document.body.appendChild(downloadATag);
+        // // Trigger a click on the link to start the download
+        // downloadATag.click();
+        // // Remove the link from the body
+        // document.body.removeChild(downloadATag);
+
+        // setTimeout(() => {
+        //   // Get the canvas data as a data URL (PNG format)
+        //   let dataUrl = this.canvas.toDataURL("image/png");
+        //   // Create a link element
+        //   let a = document.createElement("a");
+        //   // Set the href attribute to the canvas data URL
+        //   a.href = dataUrl;
+        //   // Set the download attribute with the desired file name
+        //   a.download = "your_doodle.png";
+        //   // Append the link to the body
+        //   document.body.appendChild(a);
+        //   // Trigger a click on the link to start the download
+        //   a.click();
+        //   // Remove the link from the body
+        //   document.body.removeChild(a);
+        // }, 1000);
       }
     };
   };
