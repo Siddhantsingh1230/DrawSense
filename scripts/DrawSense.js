@@ -87,10 +87,59 @@ class DrawSense {
           const max = Math.max(...y);
           return max - min;
         };
-        let point = { width: getWidth(this.paths), height: getHeight(this.paths) };
-        let knn= new KNNClassifier();
-        console.log(knn.predict(point,8));
+        let point = {
+          width: getWidth(this.paths),
+          height: getHeight(this.paths),
+        };
+        let knn = new KNNClassifier();
+        let result = knn.predict(point, 9);
+        console.log(result);
+        const resultContainer = document.querySelector(".result");
+        const resultName = document.querySelector(".name");
+        const resultClose = document.querySelector(".closeResult");
+        resultContainer.style.display="flex";
+        const resultImg = document.querySelector(".resultImg");
+        switch (result) {
+          case "pencil":
+            resultImg.src = "../assets/images/pen.png";
+            resultName.innerHTML=result;
+            break;
+          case "tree":
+            resultImg.src = "../assets/images/" + result + ".png";
+            resultName.innerHTML=result;
+            break;
+          case "house":
+            resultImg.src = "../assets/images/" + result + ".png";
+            resultName.innerHTML=result;
+            break;
+          case "bicycle":
+            resultImg.src = "../assets/images/" + result + ".png";
+            resultName.innerHTML=result;
+            break;
+          case "car":
+            resultImg.src = "../assets/images/" + result + ".png";
+            resultName.innerHTML=result;
+            break;
+          case "clock":
+            resultImg.src = "../assets/images/" + result + ".png";
+            resultName.innerHTML=result;
+            break;
+          case "guitar":
+            resultImg.src = "../assets/images/" + result + ".png";
+            resultName.innerHTML=result;
+            break;
+          case "fish":
+            resultImg.src = "../assets/images/" + result + ".png";
+            resultName.innerHTML=result;
+            break;
 
+          default:
+            break;
+        }
+
+        resultClose.addEventListener("click",()=>{
+          resultContainer.style.display="none";
+        });
         // const figure = JSON.stringify(this.paths);
         // // Create a download link
         // const downloadATag = document.createElement("a");
